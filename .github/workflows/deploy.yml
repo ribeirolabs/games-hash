@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  BASE_URL: /hash
+  BASE_URL: /games-hash
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
