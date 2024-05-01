@@ -22,20 +22,17 @@ function App() {
   const hasWinner = state.winner != null;
 
   return (
-    <div className="grid h-full w-full grid-rows-[20%_1fr] items-center justify-center">
-      <div className="flex justify-between py-2">
+    <div className="grid h-full w-full grid-cols-1 grid-rows-[20%_1fr] place-items-center items-start">
+      <div className="flex w-full max-w-2xl justify-between px-6 py-2">
         {state.players.map((player, id) => (
           <div
             key={id}
             className={twMerge(
               state.turn === id ? PLAYER_TURN[id] : CELL_COLORS[id],
-              "flex items-center gap-4 p-4 text-6xl font-bold uppercase",
+              "flex items-center gap-4 p-4 text-4xl uppercase tracking-wide",
             )}
           >
-            <div
-              contentEditable={true}
-              className="w-fit bg-transparent font-sans"
-            >
+            <div contentEditable={true} className="w-fit bg-transparent">
               {player}
             </div>
             {CELL_VALUE[id]}
@@ -43,7 +40,7 @@ function App() {
         ))}
       </div>
       <div className="relative">
-        <div className="grid grid-cols-3 gap-4 bg-white/10">
+        <div className="grid w-fit grid-cols-3 gap-6 bg-white/30">
           {state.board.map((cell) => {
             const isWinner = hasWinner && state.winner === cell.player;
 
@@ -51,8 +48,7 @@ function App() {
               <button
                 key={cell.id}
                 className={twMerge(
-                  "leading-none",
-                  "flex h-56 w-56 cursor-pointer select-none items-center justify-center bg-base text-[15rem] font-bold",
+                  "flex h-40 w-40 cursor-pointer select-none items-center justify-center bg-base text-[10rem] font-bold",
                   isWinner
                     ? PLAYER_TURN[cell.player!]
                     : CELL_COLORS[cell.player ?? -1],
